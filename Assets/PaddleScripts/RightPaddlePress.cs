@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class RightPaddlePress : MonoBehaviour {
     HingeJoint2D[] hingeJoints;
@@ -16,6 +17,7 @@ public class RightPaddlePress : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             jointMotor.motorSpeed = 2000;
+            GetComponent<AudioSource>().Play();
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {

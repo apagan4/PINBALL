@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class LeftPaddlePress : MonoBehaviour {
 
@@ -16,6 +17,7 @@ public class LeftPaddlePress : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             jointMotor.motorSpeed = -2000;
+            GetComponent<AudioSource>().Play();
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
@@ -24,3 +26,4 @@ public class LeftPaddlePress : MonoBehaviour {
         hingeJoints[0].motor = jointMotor;
     }
 }
+
