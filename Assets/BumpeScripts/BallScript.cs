@@ -16,21 +16,25 @@ public class BallScript : MonoBehaviour
     void Start()
     {
         Ball = GetComponent<Rigidbody2D>();
-        Score = 0;
-        Balls = 3;
+        Score = 0; //Begin with 0 
+        Balls = 3; //3 lives
         
     }
 
+  
+
     void Update()
     {
-        SetScoreText();
-        SetBallsText();
+        SetScoreText(); //Always have Score on the Screen As opposed to only being up when colliding
+        SetBallsText(); //Always have number of lives on screen
 
-        if (Balls == 0)
+        if (Balls == 0) //When lives run out
         {
-            Score = 0;
-            Balls = 3;
+            Score = 0;  //Score reset back to 0
+            Balls = 3;  //Balls reset to 3
         }
+
+        
     }
 
     private void FixedUpdate()
@@ -40,13 +44,14 @@ public class BallScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        //Most if statements look for a collision with a Tag, Predetermined points are given and velocity is increased.
         if (col.transform.CompareTag("Bumper"))
         {
             ContactPoint2D cont = col.contacts[0];
             Ball.velocity = Vector2.Reflect(old, cont.normal); //Vector 2 reflects back to the normal
             Ball.velocity += cont.normal * 3.0f;  //Speeds ball up 
-            Score = Score + 50;
-            SetScoreText();
+            Score = Score + 50; 
+            
         }
         if (col.transform.CompareTag("Trigger"))
         {
@@ -54,7 +59,7 @@ public class BallScript : MonoBehaviour
             Ball.velocity = Vector2.Reflect(old, cont.normal); //Vector 2 reflects back to the normal
             Ball.velocity += cont.normal * 3.0f;  //Speeds ball up 
             Score = Score + 50;
-            SetScoreText();
+            
         }
 
         if (col.transform.CompareTag("Black Bumper"))
@@ -63,7 +68,7 @@ public class BallScript : MonoBehaviour
             Ball.velocity = Vector2.Reflect(old, cont.normal); //Vector 2 reflects back to the normal
             Ball.velocity += cont.normal * 3.0f;  //Speeds ball up 
             Score = Score + 100;
-            SetScoreText();
+            
         }
         if (col.transform.CompareTag("White Bumper"))
         {
@@ -71,12 +76,13 @@ public class BallScript : MonoBehaviour
             Ball.velocity = Vector2.Reflect(old, cont.normal); //Vector 2 reflects back to the normal
             Ball.velocity += cont.normal * 3.0f;  //Speeds ball up 
             Score = Score + 200;
-            SetScoreText();
+            
         }
 
+        //Out of Bounds to reset ball to original position
         if (col.transform.CompareTag("Out Of Bounds"))
         {
-            Balls = Balls - 1;
+            Balls = Balls - 1; //A ball is taken away and is displayed
             SetBallsText();
         }
     }

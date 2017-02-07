@@ -16,12 +16,12 @@ public class LeftPaddlePress : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            jointMotor.motorSpeed = -2000;
-            GetComponent<AudioSource>().Play();
+            jointMotor.motorSpeed = -2000; //Decrease Motor speed
+            GetComponent<AudioSource>().Play(); //Play audio every keypress
         }
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            jointMotor.motorSpeed = 2000;
+            jointMotor.motorSpeed = 2000; //Increase Motor speed (swings back)
         }
         hingeJoints[0].motor = jointMotor;
     }
