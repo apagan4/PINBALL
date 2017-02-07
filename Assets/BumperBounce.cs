@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BumperBounce : MonoBehaviour {
 
-    private void OnCollisionEnter2D(Collision2D col)
+   
+    void OnCollisionEnter2D(Collision2D col)
     {
-        myRigidbody.AddForce.(col.contacts[0].normal * bumperForce, ForceMode.Impulse);
-    }
+        col.rigidbody.AddForce(transform.up);
+    } 
 }
