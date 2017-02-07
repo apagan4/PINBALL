@@ -13,7 +13,7 @@ public class LeftPaddlePress : MonoBehaviour {
 	
 	
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             jointMotor.motorSpeed = -2000;
         }
@@ -22,5 +22,5 @@ public class LeftPaddlePress : MonoBehaviour {
             jointMotor.motorSpeed = 2000;
         }
         hingeJoints[0].motor = jointMotor;
-	}
+    }
 }
